@@ -1,0 +1,27 @@
+{
+  "name": "about~numbers",
+  "private": true,
+  "version": "0.0.0a",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.0.1",
+    "@react-three/fiber": "^8.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-spring": "8.0.19",
+    "react-typing-effect": "^2.0.5",
+    "three": "^0.139.2",
+    "threejs-meshline": "^2.0.12"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.0.0",
+    "vite": "^3.0.0"
+  }
+}
