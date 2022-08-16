@@ -26,19 +26,18 @@ function Items() {
   const { width: w, height: h } = useThree((state) => state.viewport)
   return (
     <Scroll>
-      <Item url="" scale={[w / 3, w / 3, 1]} position={[-w / 6, 0, 0]} />
-      <Item url="" scale={[2, w / 3, 1]} position={[w / 30, -h, 0]} />
-      <Item url="" scale={[w / 3, w / 5, 1]} position={[-w / 4, -h * 1, 0]} />
-      <Item url="" scale={[w / 5, w / 5, 1]} position={[w / 4, -h * 1.2, 0]} />
-      <Item url="" scale={[w / 5, w / 5, 1]} position={[w / 10, -h * 1.75, 0]} />
-      <Item url="" scale={[w / 3, w / 3, 1]} position={[-w / 4, -h * 2, 0]} />
-      <Item url="" scale={[w / 3, w / 5, 1]} position={[-w / 4, -h * 2.6, 0]} />
-      <Item url="" scale={[w / 2, w / 2, 1]} position={[w / 4, -h * 3.1, 0]} />
-      <Item url="" scale={[w / 2.5, w / 2, 1]} position={[-w / 6, -h * 4.1, 0]} />
+      <Item url="/entrypoint.jpg" scale={[w / 3, w / 3, 1]} position={[-w / 6, 0, 0]} />
+      <Item url="/profPhanus.png" scale={[2, w / 3, 1]} position={[w / 30, -h, 0]} />
+      <Item url="/tinfoil-schwepe.png" scale={[w / 3, w / 5, 1]} position={[-w / 4, -h * 1, 0]} />
+      <Item url="/swagtagDONE.png" scale={[w / 5, w / 5, 1]} position={[w / 4, -h * 1.2, 0]} />
+      <Item url="/swagtagDONE2.png" scale={[w / 5, w / 5, 1]} position={[w / 10, -h * 1.75, 0]} />
+      <Item url="/schwepe.png" scale={[w / 3, w / 3, 1]} position={[-w / 4, -h * 2, 0]} />
+      <Item url="/schwepe2.png" scale={[w / 3, w / 5, 1]} position={[-w / 4, -h * 2.6, 0]} />
+      <Item url="/schwepe9.png" scale={[w / 2, w / 2, 1]} position={[w / 4, -h * 3.1, 0]} />
+      <Item url="/rich.png" scale={[w / 2.5, w / 2, 1]} position={[-w / 6, -h * 4.1, 0]} />
     </Scroll>
   )
 }
-
 function App() {
   const [hovered, hover] = useState(false)
   const mouse = useRef([0, 0])
@@ -52,17 +51,17 @@ function App() {
 
 
   return (
-    <Canvas camera={{ zoom: 80 }} gl={{ alpha: false, antialias: false, stencil: false, depth: false }} dpr={[1, 1.5]}>
+    <Canvas orthographic camera={{ zoom: 80 }} gl={{ alpha: false, antialias: false, stencil: false, depth: false }} dpr={[1, 1.5]}>
       {/* <color attach="background" args={['#f0f0f0']} /> */}
       <ScrollControls damping={6} pages={5}>
-        {/* <Items /> */}
+        <Items />
         <Scroll html style={{ width: '100%' }}>
-          <div >
+          <div>
             <ReactTypingEffect
               style={{ position: 'absolute', top: `80vh`, right: '20vw', fontSize: '12em', transform: `translate3d(0,-100%,0)` }}
               text={["247", "420", "247420", "hyper~bolic", "muta~gen",]} />
             <p style={{ position: 'absolute', top: '95vh', right: '10vw' }}>
-              <a href=''>an entrypoint</a> dApp ecosystem. check it out
+              <a href=''>an entrypoint</a> dApp ecosystem. check it out 👇
             </p>
           </div>
           <div style={{ position: 'absolute', top: '180vh', left: '10vw' }}>
@@ -72,8 +71,13 @@ function App() {
           </div>
           <div style={{ position: 'absolute', top: '260vh', right: '10vw' }}>
             <h1>dApp ecosystem</h1>
-            <p></p>
-            <p></p>
+            <p>since late 2017 our community has been toiling working on the products </p>
+            <h2>muta~gen</h2>
+            <p>go from a simple form to an editable nft</p>
+            <h2>hyper~bolic :</h2>
+            <h3>dns</h3>
+            <h3>tunnel</h3>
+            <h3>code-server</h3>
           </div>
           <div style={{ position: 'absolute', top: '350vh', left: '10vw' }}>
             <h1>schwepe  labs</h1>
