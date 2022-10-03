@@ -5,10 +5,14 @@ import './index.css'
 
 function Overlay() {
   return (
-    <div style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none', width: '100%', height: '100%' }}>
+    <div 
+      className='text-white'
+      style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none', width: '100%', height: '100%' }}>
+      
       <a href="https://github.com/AnEntrypoint" style={{ position: 'absolute', top: 40, left: 90, fontSize: '13px' }}>
-        probably emerged from an entrypoint
+        probably emerged from an entrypoint. Press <kbd className="kbd kbd-sm">F</kbd> to pay respects.
       </a>
+      
     </div>
   )
 }
