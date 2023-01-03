@@ -127,7 +127,7 @@ function App() {
               ]}
             />
             <p
-              className="text-white"
+              className="text-white text-xl"
               style={{ position: "absolute", top: "95vh", right: "10vw" }}
             >
               <a href="">an entrypoint</a> dApp ecosystem. check it out 👇
@@ -181,10 +181,10 @@ function App() {
           </div>
           <div 
             className="text-blue-300"
-            style={{ position: "absolute", top: "415vh", left: "10vw" }}>
+            style={{ position: "absolute", top: "340vh", left: "10vw" }}>
             <h1 className="text-5xl">schwepe labs</h1>
             <p>
-              no one in an entrypoint would have guessed this lovable pink frog
+              no one in an entrypoint would have guessed this lovable pink frog would mascot our community into 
             </p>
             <p></p>
           </div>
