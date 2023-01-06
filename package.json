@@ -1,7 +1,7 @@
 {
   "name": "about~numbers",
   "private": true,
-  "version": "0.0.0a",
+  "version": "24.7.420a",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,9 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@14islands/lerp": "1.0.3",
+    "@14islands/r3f-scroll-rig": "8.0.0",
     "@react-three/drei": "^9.0.1",
     "@react-three/fiber": "^8.3.1",
-    "daisyui": "^2.31.0",
+    "daisyui": "^2.46.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-spring": "8.0.19",
