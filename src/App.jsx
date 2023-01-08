@@ -198,13 +198,29 @@ export default function App() {
                 out 👇
               </h1>
             </div>
-
+            <div
+            className='text-white'
+            style={{
+              position: 'absolute',
+              top: `1vh`,
+              left: '50vw',
+              fontSize: '4em',
+              transform: `translate3d(0,-120%,0)`,
+            }}>
+               {/* <!-- NFT minter --> */}
+              <iframe
+              style= {{position: 'absolute', right: '-400px'}}
+                width={800}
+                height={540}
+                src='https://gateway.ipfscdn.io/ipfs/Qmcine1gpZUbQ73nk7ZGCcjKBVFYXrEtqrhujXk3HDQ6Nn/erc721.html?contract=0xB96635E821Ef53790628705e1B68fca7958b42a3&chainId=137&theme=dark&primaryColor=cyan'
+              />
+            </div>
             <div
               className='text-red-300'
               style={{ position: 'absolute', top: '180vh', left: '10vw' }}>
               <h1 className='text-5xl'>wait⏳less😮‍💨</h1>
               <p className='text-2xl'>
-                in <a href='https://dsc.gg/entrypoint'>an entrypoint</a>, we
+                in <a style={{color: 'white'}} href='https://dsc.gg/entrypoint'>an entrypoint</a>, we
                 focus on keeping things as light possible.
                 <br />
                 lighter the better, if it ain't <code>hyper~lite</code> why are
@@ -356,14 +372,8 @@ export default function App() {
               <h1 className='text-white text-2xl'>
                 <code>praise jeeves.</code>
               </h1>
-              <iframe
-                style={{ position: 'absolute', top: '15vh', right: '10vw' }}
-                width={300}
-                height={600}
-                src='https://gateway.ipfscdn.io/ipfs/Qmcine1gpZUbQ73nk7ZGCcjKBVFYXrEtqrhujXk3HDQ6Nn/erc721.html?contract=0xB96635E821Ef53790628705e1B68fca7958b42a3&chainId=137'
-              />
             </div>
-
+            
             <div
               className='text-white'
               style={{ position: 'absolute', top: '490vh', left: '4vw' }}>
