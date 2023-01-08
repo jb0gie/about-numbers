@@ -356,7 +356,12 @@ export default function App() {
               <h1 className='text-white text-2xl'>
                 <code>praise jeeves.</code>
               </h1>
-              
+              <iframe
+                style={{ position: 'absolute', top: '15vh', right: '10vw' }}
+                width={300}
+                height={600}
+                src='https://gateway.ipfscdn.io/ipfs/Qmcine1gpZUbQ73nk7ZGCcjKBVFYXrEtqrhujXk3HDQ6Nn/erc721.html?contract=0xB96635E821Ef53790628705e1B68fca7958b42a3&chainId=137'
+              />
             </div>
 
             <div
