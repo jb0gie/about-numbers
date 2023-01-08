@@ -110,7 +110,7 @@ function Items() {
         position={[w / 5, -h * 1, 0]}
       />
       <Item
-        url='/2q.png'
+        url='/alx-christ.png'
         scale={[w / 2.5, w / 6, 1]}
         position={[w / 6, -h * 1.65, 0]}
       />
