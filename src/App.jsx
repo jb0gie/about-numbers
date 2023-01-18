@@ -1,26 +1,29 @@
-import * as THREE from 'three';
-import { VideoTexture } from 'three';
-import React, { useState, useEffect, useRef } from 'react';
-import ReactTypingEffect from 'react-typing-effect';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import * as THREE from "three";
+import { VideoTexture } from "three";
+import React, { useState, useEffect, useRef } from "react";
+import ReactTypingEffect from "react-typing-effect";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   useIntersect,
   Image,
   ScrollControls,
   Scroll,
   useGLTF,
-} from '@react-three/drei';
+} from "@react-three/drei";
 
-import './App.css';
+import "./App.css";
+
+//
+//
 
 function SchwepeHead(props) {
   const portalUrl = () => {
-    console.log('DO NOT TOUCH THE PINK ONE❗');
-    window.open('https://schwepe.co.za');
+    console.log("DO NOT TOUCH THE PINK ONE❗");
+    window.open("https://schwepe.co.za");
   };
-  const { nodes, materials } = useGLTF('/schwepehead.glb');
+  const { nodes, materials } = useGLTF("/schwepehead.glb");
   return (
-    <group {...props} dispose={null} onClick={portalUrl} >
+    <group {...props} dispose={null} onClick={portalUrl}>
       <group scale={1}>
         <mesh
           castShadow
@@ -52,12 +55,12 @@ function SchwepeHead(props) {
     </group>
   );
 }
-useGLTF.preload('/schwepehead.glb');
+useGLTF.preload("/schwepehead.glb");
 
 function Item({ url, scale, ...props }) {
   const visible = useRef(false);
-  const ref = useIntersect(isVisible => (visible.current = isVisible));
-  const { height } = useThree(state => state.viewport);
+  const ref = useIntersect((isVisible) => (visible.current = isVisible));
+  const { height } = useThree((state) => state.viewport);
   useFrame((state, delta) => {
     ref.current.position.y = THREE.MathUtils.damp(
       ref.current.position.y,
@@ -81,61 +84,66 @@ function Item({ url, scale, ...props }) {
 }
 
 function Items() {
-  const { width: w, height: h } = useThree(state => state.viewport);
+  const { width: w, height: h } = useThree((state) => state.viewport);
   return (
     <Scroll>
       <SchwepeHead
-        position={[0, 0, 0]}
+        position={[-4.5, 1.5, 0]}
+        rotation={[Math.PI / 2, 0, 0]}
+        scale={2}
+      />
+      <SchwepeHead
+        position={[4.5, 1.5, 0]}
         rotation={[Math.PI / 2, 0, 0]}
         scale={2}
       />
       <Item
-        url='/schwepe2.png'
+        url="/schwepe2.png"
         scale={[w / 7, w / 11, 1]}
-        position={[-w / 5, -h * 0.45, 0]}
+        position={[-w / 5, -h * 0.43, 0]}
       />
       <Item
-        url='/tinfoil-schwepe.png'
+        url="/tinfoil-schwepe.png"
         scale={[w / 4, w / 6, 1]}
-        position={[-w / 3, -h * 0.15, 0]}
+        position={[-w / 3.1, -h * 0.15, 0]}
       />
       <Item
-        url='/schwepe9.png'
+        url="/schwepe9.png"
         scale={[w / 3, w / 5, 1]}
-        position={[-w / 4, -h * 0.8, 0]}
+        position={[-w / 4, -h * 1, 0]}
       />
       <Item
-        url='/swagtagDONE.png'
+        url="/swagtagDONE.png"
         scale={[w / 3, w / 3, 1]}
         position={[w / 5, -h * 1, 0]}
       />
       <Item
-        url='/alx-christ.png'
+        url="/alx-christ.png"
         scale={[w / 2.5, w / 6, 1]}
         position={[w / 6, -h * 1.65, 0]}
       />
       <Item
-        url='/schwepe.png'
+        url="/schwepe.png"
         scale={[w / 3, w / 3, 1]}
         position={[-w / 4, -h * 2, 0]}
       />
       <Item
-        url='/pinkpepe8.png'
+        url="/pinkpepe8.png"
         scale={[w / 3, w / 5, 1]}
         position={[-w / 6, -h * 2.6, 0]}
       />
       <Item
-        url='/pinkpepe4.png'
+        url="/pinkpepe4.png"
         scale={[w / 3, w / 10, 1]}
         position={[-w / 4, -h * 3, 0]}
       />
       <Item
-        url='/rich.png'
+        url="/rich.png"
         scale={[w / 5, w / 5, 1]}
         position={[-w / 3, -h * 3.6, 0]}
       />
       <Item
-        url='/negajeeeves.png'
+        url="/negajeeeves.png"
         scale={[w / 4, w / 6, 1]}
         position={[w / 5, -h * 3.3, 0]}
       />
@@ -153,7 +161,7 @@ export default function App() {
 
   useEffect(() => {
     document.body.style.cursor = hovered
-      ? 'pointer'
+      ? "pointer"
       : "url('https://raw.githubusercontent.com/chenglou/react-motion/master/demos/demo8-draggable-list/cursor.png') 39 39, auto";
   }, [hovered]);
 
@@ -163,65 +171,121 @@ export default function App() {
         // orthographic
         // camera={{ zoom: 80 }}
         gl={{ alpha: false, antialias: false, stencil: false, depth: false }}
-        dpr={[1, 1.5]}>
+        dpr={[1, 1.5]}
+      >
         {/* <color attach="background" args={['#f0f0f0']} /> */}
-        <ScrollControls damping={6} pages={5}>
+        <ScrollControls damping={6} pages={7}>
           <Items />
-          <Scroll html style={{ width: '100%' }}>
+          <Scroll html style={{ width: "100%" }}>
             <div>
-              <ReactTypingEffect
-                className='text-white'
+              <div
+                className="text-white"
                 style={{
-                  position: 'absolute',
+                  position: "absolute",
+                  top: `1vh`,
+                  left: "50vw",
+                  fontSize: "4em",
+                  transform: `translate3d(0,-120%,0)`,
+                }}
+              >
+                {/* <!-- NFT minter --> */}
+                <iframe
+                  style={{
+                    position: "absolute",
+                    top: "75px",
+                    right: "-400px",
+                    color: "transparent",
+                  }}
+                  width={800}
+                  height={540}
+                  src="https://gateway.ipfscdn.io/ipfs/Qmcine1gpZUbQ73nk7ZGCcjKBVFYXrEtqrhujXk3HDQ6Nn/erc721.html?contract=0xB96635E821Ef53790628705e1B68fca7958b42a3&chainId=137&theme=dark&primaryColor=cyan"
+                />
+              </div>
+              <ReactTypingEffect
+                className="text-white"
+                style={{
+                  position: "absolute",
                   top: `80vh`,
-                  right: '20vw',
-                  fontSize: '4em',
+                  right: "20vw",
+                  fontSize: "4em",
                   transform: `translate3d(0,-100%,0)`,
                 }}
                 text={[
-                  '247',
-                  '420',
-                  '247420',
-                  'schwepe',
-                  'swagtag',
-                  'hyper~bolic',
-                  'muta~gen',
-                  'hyper~nat',
-                  'hyper~ipc~secure',
-                  'h~shell',
+                  "hey you",
+                  "an~entrypoint",
+                  "genesis~babies",
+                  "MINT MEOW",
+                  "247",
+                  "420",
+                  "247420",
+                  "schwepe",
+                  "swag~tag",
+                  "hyper~bolic",
+                  "muta~gen",
+                  "hyper~nat",
+                  "hyper~ipc~secure",
+                  "h~shell",
+                  "schwe~fi",
+                  "schwepe~nomics",
+                  "an",
+                  "entry",
+                  "point",
                 ]}
               />
               <h1
-                className='text-white text-right text-2xl'
-                style={{ position: 'absolute', top: '80vh', right: '10vw' }}>
-                <a href=''>an [entrypoint]</a> dApp ecosystem. <br /> check it
-                out 👇
+                className="text-white text-right text-2xl"
+                style={{ position: "absolute", top: "85vh", right: "10vw" }}
+              >
+                <a href="https://247420.xyz">
+                  <code>an [entrypoint]</code>
+                </a>{" "}
+                <br /> check it out 👇 - always available <code>(24/7)</code>{" "}
+                <br /> and has a relaxed and approachable vibe (420).
               </h1>
+
+              <h2
+                className="text-white text-left text-2xl"
+                style={{ position: "absolute", top: "110vh", right: "10vw" }}
+              >
+                <em>"Media Mavericks"</em> - bold and innovative.
+              </h2>
+              <h2
+                className="text-white text-center text-2xl"
+                style={{ position: "absolute", top: "105vh", right: "35vw" }}
+              >
+                <em>"The Creative Collective"</em> - a group of creative
+                professionals <br />
+                working together to deliver high-quality media services.
+              </h2>
+
+              <h2
+                className="text-white text-right text-2xl"
+                style={{ position: "absolute", top: "195vh", left: "10vw" }}
+              >
+                <em>"The Media Mixologists"</em> - as experts in creating the
+                perfect <br />
+                blend of media elements to achieve the desired results.
+              </h2>
+              <h2
+                className="text-white text-right text-2xl"
+                style={{ position: "absolute", top: "235vh", right: "10vw" }}
+              >
+                <em>"The Media Masters"</em> - highly skilled and experienced in
+                the media industry.
+              </h2>
             </div>
+
             <div
-            className='text-white'
-            style={{
-              position: 'absolute',
-              top: `1vh`,
-              left: '50vw',
-              fontSize: '4em',
-              transform: `translate3d(0,-120%,0)`,
-            }}>
-               {/* <!-- NFT minter --> */}
-              <iframe
-              style= {{position: 'absolute', right: '-400px'}}
-                width={800}
-                height={540}
-                src='https://gateway.ipfscdn.io/ipfs/Qmcine1gpZUbQ73nk7ZGCcjKBVFYXrEtqrhujXk3HDQ6Nn/erc721.html?contract=0xB96635E821Ef53790628705e1B68fca7958b42a3&chainId=137&theme=dark&primaryColor=cyan'
-              />
-            </div>
-            <div
-              className='text-red-300'
-              style={{ position: 'absolute', top: '180vh', left: '10vw' }}>
-              <h1 className='text-5xl'>wait⏳less😮‍💨</h1>
-              <p className='text-2xl'>
-                in <a style={{color: 'white'}} href='https://dsc.gg/entrypoint'>an entrypoint</a>, we
-                focus on keeping things as light possible.
+              className="text-red-300"
+              style={{ position: "absolute", top: "180vh", left: "10vw" }}
+            >
+              <h1 className="text-5xl">wait⏳less😮‍💨</h1>
+              <p className="text-2xl">
+                in{" "}
+                <a style={{ color: "white" }} href="https://dsc.gg/entrypoint">
+                  an entrypoint
+                </a>
+                , we focus on keeping things as light possible.
                 <br />
                 lighter the better, if it ain't <code>hyper~lite</code> why are
                 you running it ❔
@@ -229,18 +293,19 @@ export default function App() {
             </div>
 
             <div
-              className='text-green-300'
-              style={{ position: 'absolute', top: '248vh', right: '13vw' }}>
-              <h1 className='text-5xl'>dApp💻ecosystem🏡</h1>
+              className="text-green-300"
+              style={{ position: "absolute", top: "248vh", right: "13vw" }}
+            >
+              <h1 className="text-5xl">dApp💻ecosystem🏡</h1>
               <br />
-              <p className='text-2xl'>
+              <p className="text-2xl">
                 our community has been developing since late 2017
               </p>
               <br />
-              <div className='mx-auto overflow-x-auto'>
-                <table className='table table-zebra w-full'>
+              <div className="mx-auto overflow-x-auto">
+                <table className="table table-zebra w-full">
                   {/* <!-- head --> */}
-                  <thead className='text-center'>
+                  <thead className="text-center">
                     <tr>
                       <th></th>
                       <th>Project Name</th>
@@ -255,97 +320,107 @@ export default function App() {
                       <td>school of minnows</td>
                       <td>a steemit/hive discord upvote bot</td>
                       <td>
-                        <button className='btn glass'>see repo</button>
+                        <a
+                          href="https://github.com/AnEntrypoint/school-of-minnows"
+                          target="_blank"
+                        >
+                          <button className="btn glass">see the repo</button>
+                        </a>
                       </td>
                     </tr>
                     {/* <!-- row 2 --> */}
                     <tr>
                       <th>2</th>
-                      <td>freedom first</td>
-                      <td>an [entrypoint] genesis on eos</td>
+                      <td>monaverse</td>
+                      <td>placed 🥉 in a build-a-thon</td>
                       <td>
-                        <button className='btn glass'>no repo</button>
+                        <a
+                          href="https://opensea.io/assets/matic/0x78cfa53ac1de634d9268c317269867f20c04ea76/12"
+                          target="_blank"
+                        >
+                          <button className="btn glass">see the nft</button>
+                        </a>
                       </td>
                     </tr>
                     {/* <!-- row 3 --> */}
                     <tr>
                       <th>3</th>
-                      <td>dConnect</td>
-                      <td>discord replacement experiments</td>
+                      <td>moralis hackathon</td>
+                      <td>schwepe and swagtag is born</td>
                       <td>
-                        <button className='btn glass'>no repo</button>
+                        <a
+                          href="https://github.com/AnEntrypoint/swagtag-avax/tree/main"
+                          target="_blank"
+                        >
+                          <button className="btn glass">see repo</button>
+                        </a>
                       </td>
                     </tr>
                     {/* <!-- row 4 --> */}
                     <tr>
                       <th>4</th>
-                      <td>chakra chain</td>
-                      <td>hyper~powered</td>
+                      <td>hyperbolic~relay</td>
+                      <td>hyper~powered relay</td>
                       <td>
-                        <button className='btn glass'>see repo</button>
+                        <a href="" target="_blank">
+                          <button className="btn glass">see repo</button>
+                        </a>
                       </td>
                     </tr>
                     {/* <!-- row 5 --> */}
                     <tr>
-                      <th>5</th>
-                      <td>monaverse</td>
-                      <td>placed 🥉 in a build-a-thon</td>
+                      <th>4</th>
+                      <td>hyperbolic~dns</td>
+                      <td>dns powered by hyper~core</td>
                       <td>
-                        <button className='btn glass'>no repo</button>
+                        <a href="https://github.com/AnEntrypoint/hyperbolic-relay" target="_blank">
+                          <button className="btn glass">see repo</button>
+                        </a>
                       </td>
                     </tr>
                     {/* <!-- row 6 --> */}
                     <tr>
                       <th>6</th>
-                      <td>moralis</td>
-                      <td>schwepe and swagtag is born</td>
+                      <td>hyper~tunnel</td>
+                      <td>a hyper~light app</td>
                       <td>
-                        <button className='btn glass'>see repo</button>
+                        <a href="https://github.com/AnEntrypoint/hyperbolic-tunnel" target="_blank">
+                          <button className="btn glass">see repo</button>
+                        </a>
                       </td>
                     </tr>
                     {/* <!-- row 7 --> */}
                     <tr>
                       <th>7</th>
-                      <td>hyper~tunnel</td>
-                      <td>a hyper~light app</td>
+                      <td>hyper~nat</td>
+                      <td>we pwned udp && tcp</td>
                       <td>
-                        <button className='btn glass'>see repo</button>
+                        <a href="https://github.com/AnEntrypoint/hyper-nat" target="_blank">
+                          <button className="btn glass">see repo</button>
+                        </a>
                       </td>
                     </tr>
                     {/* <!-- row 8 --> */}
                     <tr>
                       <th>8</th>
-                      <td>hyper~dns</td>
-                      <td>dns powered by hyper~core</td>
+                      <td>muta~gen</td>
+                      <td>mutagenic NFT metadata</td>
                       <td>
-                        <button className='btn glass'>see repo</button>
+                        <a href="https://github.com/AnEntrypoint/mutagen" target="_blank">
+                          <button className="btn glass">see repo</button>
+                        </a>
                       </td>
                     </tr>
                     {/* <!-- row 9 --> */}
                     <tr>
                       <th>9</th>
-                      <td>hyper~nat</td>
-                      <td>we pwned udp && tcp</td>
-                      <td>
-                        <button className='btn glass'>see repo</button>
-                      </td>
-                    </tr>
-                    {/* <!-- row 10 --> */}
-                    <tr>
-                      <th>10</th>
-                      <td>muta~gen</td>
-                      <td>mutagenic NFT metadata</td>
-                      <td>
-                        <button className='btn glass'>see repo</button>
-                      </td>
-                    </tr>
-                    {/* <!-- row 11 --> */}
-                    <tr>
-                      <th>11</th>
                       <td>schwepe</td>
                       <td>the pink one</td>
                       <td>
-                        <button className='btn glass'>see repo</button>
+                        <a href="https://github.com/steph5nus/schwepe" target="_blank">
+
+                        <button className="btn glass">see repo</button>
+                        </a>
                       </td>
                     </tr>
                   </tbody>
@@ -354,31 +429,227 @@ export default function App() {
             </div>
 
             <div
-              className='text-blue-300'
-              style={{ position: 'absolute', top: '370vh', left: '5vw' }}>
-              <h1 className='text-5xl'>schwepe🐸labs🧪</h1>
-              <p className='text-2xl'>
+              className="text-blue-300"
+              style={{ position: "absolute", top: "370vh", left: "5vw" }}
+            >
+              <h1 className="text-5xl">schwepe🐸labs🧪</h1>
+              <p className="text-2xl">
                 no one in an entrypoint would have guessed <br />
                 this lovable pink frog would mascot our community into
                 adventures <br />
-                like the{' '}
-                <a href='https://www.youtube.com/watch?v=tb6bUYpM1_0'>
+                like the{" "}
+                <a href="https://www.youtube.com/watch?v=tb6bUYpM1_0">
                   𝓶𝓬𝓪𝓯𝓮𝓮𝓳𝓸𝓫
                 </a>
               </p>
             </div>
 
-            <div style={{ position: 'absolute', top: '390vh', right: '11vw' }}>
-              <h1 className='text-white text-2xl'>
+            <section
+              style={{ position: "absolute", top: "480vh", right: "10vw" }}
+              id="services"
+              class="py-20 xl:py-24 bg-trasnparent max-w-5xl mx-auto"
+            >
+              <div class="container px-4 mx-auto">
+                <div class="text-center">
+                  <h3 class="mb-6 text-3xl md:text-5xl lg:text-7xl text-white font-bold tracking-tight leading-snug md:leading-snug lg:leading-snug">
+                    What <em>is</em>{" "}
+                    <code>
+                      <a href="https://247420.xyz">247420.xyz</a>
+                    </code>{" "}
+                    ❓
+                  </h3>
+                </div>
+                <div class="flex flex-wrap justify-center items-center -mx-4">
+                  <div class="w-full p-4">
+                    <div class="px-8 pb-8">
+                      <p class="mb-6 text-right text-white font-bold">
+                        We are is a discord community of creative professionals,
+                        dedicated to producing the world's most innovative and
+                        original media. Individuals work around the clock, using
+                        their skills and talents to craft unique and engaging
+                        content that resonates with audiences of all ages.
+                      </p>
+                      <p class="mb-6 text-right text-white font-bold">
+                        At the heart of this community is a shared passion for
+                        creativity and a love of cannibis culture. Members of
+                        this community enjoy smoking marijuana as they work,
+                        using it as a tool to unlock their full creative
+                        potential and push the boundaries of what is possible.
+                        Whether they are working on music, art, film, or
+                        something else entirely, these creative professionals
+                        are always looking for ways to bring something new and
+                        exciting to the table. They are a tight-knit group,
+                        always willing to collaborate and support one another as
+                        they strive to achieve their goals. As a result of their
+                        tireless efforts and dedication, this community has
+                        become a hub for some of the most impressive and
+                        original media being produced today.
+                      </p>
+                      <p class="mb-6 text-right text-white font-bold">
+                        From cutting-edge music and art to groundbreaking films
+                        and more, this community is filled with creative
+                        individuals who are pushing the limits and constantly
+                        finding new ways to express themselves. Overall, this
+                        Discord community of creative professionals working
+                        around the clock and smoking weed is a place where the
+                        most talented and innovative minds come together to
+                        create truly memorable and impactful media. So, if
+                        you're a creative professional looking to join a
+                        supportive and inspiring community, this could be the
+                        perfect place for you.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section
+              style={{ position: "absolute", top: "545vh", left: "10vw" }}
+              id="services"
+              class="py-20 xl:py-24 bg-trasnparent max-w-5xl mx-auto"
+            >
+              <div class="container px-4 mx-auto">
+                <div class="text-center">
+                  <h3 class="mb-6 text-3xl md:text-5xl lg:text-7xl text-white font-bold tracking-tight leading-snug md:leading-snug lg:leading-snug">
+                    Our Services
+                  </h3>
+                </div>
+                <div class="flex flex-wrap justify-center items-center -mx-4">
+                  <div class="w-full md:w-1/3 p-4">
+                    <div class="flex flex-col pt-8 pb-8 hover:scale-105 transition duration-500">
+                      <div class="px-8 pb-8">
+                        <h3 class="mb-6 text-center text-lg md:text-xl text-white font-medium">
+                          Video production
+                        </h3>
+                        <p class="mb-6 text-center text-gray-400 font-medium">
+                          creating high-quality promotional, corporate, and
+                          training videos.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full md:w-1/3 p-4">
+                    <div class="flex flex-col pt-8 pb-8  hover:scale-105 transition duration-500">
+                      <div class="px-8 pb-8">
+                        <h3 class="mb-6 text-center text-lg md:text-xl text-white font-medium">
+                          Graphic design
+                        </h3>
+                        <p class="mb-6 text-center text-gray-400 font-medium">
+                          professional logo design, marketing materials, and
+                          website graphics.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full md:w-1/3 p-4">
+                    <div class="flex flex-col pt-8 pb-8  hover:scale-105 transition duration-500">
+                      <div class="px-8 pb-8">
+                        <h3 class="mb-6 text-center text-lg md:text-xl text-white font-medium">
+                          Photography{" "}
+                        </h3>
+                        <p class="mb-6 text-center text-gray-400 font-medium">
+                          professional photography services for use in marketing
+                          materials and on websites.{" "}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full md:w-1/3 p-4">
+                    <div class="flex flex-col pt-8 pb-8  hover:scale-105 transition duration-500">
+                      <div class="px-8 pb-8">
+                        <h3 class="mb-6 text-center text-lg md:text-xl text-white font-medium">
+                          Audio production{" "}
+                        </h3>
+                        <p class="mb-6 text-center text-gray-400 font-medium">
+                          recording and editing audio for podcasts, video
+                          content, and more.{" "}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full md:w-1/3 p-4">
+                    <div class="flex flex-col pt-8 pb-8  hover:scale-105 transition duration-500">
+                      <div class="px-8 pb-8">
+                        <h3 class="mb-6 text-center text-lg md:text-xl text-white font-medium">
+                          Content creation{" "}
+                        </h3>
+                        <p class="mb-6 text-center text-gray-400 font-medium">
+                          writes and edits articles, blog posts, social media
+                          posts, and other types of content.{" "}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full md:w-1/3 p-4">
+                    <div class="flex flex-col pt-8 pb-8  hover:scale-105 transition duration-500">
+                      <div class="px-8 pb-8">
+                        <h3 class="mb-6 text-center text-lg md:text-xl text-white font-medium">
+                          Web design and development{" "}
+                        </h3>
+                        <p class="mb-6 text-center text-gray-400 font-medium">
+                          creates and maintains websites, as well as developing
+                          custom web-based applications.{" "}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full md:w-1/3 p-4">
+                    <div class="flex flex-col pt-8 pb-8  hover:scale-105 transition duration-500">
+                      <div class="px-8 pb-8">
+                        <h3 class="mb-6 text-center text-lg md:text-xl text-white font-medium">
+                          Marketing and advertising{" "}
+                        </h3>
+                        <p class="mb-6 text-center text-gray-400 font-medium">
+                          offers a full range of marketing and advertising
+                          services, including social media marketing and email
+                          marketing.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full md:w-1/3 p-4">
+                    <div class="flex flex-col pt-8 pb-8  hover:scale-105 transition duration-500">
+                      <div class="px-8 pb-8">
+                        <h3 class="mb-6 text-center text-lg md:text-xl text-white font-medium">
+                          Event planning and management{" "}
+                        </h3>
+                        <p class="mb-6 text-center text-gray-400 font-medium">
+                          experienced in organizing and managing events such as
+                          conferences, trade shows, and other gatherings.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full md:w-1/3 p-4">
+                    <div class="flex flex-col pt-8 pb-8  hover:scale-105 transition duration-500">
+                      <div class="px-8 pb-8">
+                        <h3 class="mb-6 text-center text-lg md:text-xl text-white font-medium">
+                          Public relations
+                        </h3>
+                        <p class="mb-6 text-center text-gray-400 font-medium">
+                          develops and implements PR strategies, writes press
+                          releases, and manages media relations.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <div style={{ position: "absolute", top: "400vh", right: "11vw" }}>
+              <h1 className="text-white text-2xl">
                 <code>praise jeeves.</code>
               </h1>
             </div>
-            
+
             <div
-              className='text-white'
-              style={{ position: 'absolute', top: '490vh', left: '4vw' }}>
-              <p className='text-center'>
-                Copyright © 20XX ~ built with love in{' '}
+              className="text-white"
+              style={{ position: "absolute", top: "690vh", left: "4vw" }}
+            >
+              <p className="text-center">
+                Copyright © 20XX ~ built with love in{" "}
                 <code>an [entrypoint]</code>
               </p>
             </div>
